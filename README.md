@@ -1,1 +1,1 @@
-# exe-js
+# JavaScript practice repository
