@@ -12,16 +12,16 @@ function applyTagToText(markdown, delimiter, tag) {
   return markdown.replace(pattern, replacement);
 }
 
-function parse__(markdown) {
+function parseBold(markdown) {
   return applyTagToText(markdown, '__', 'strong');
 }
 
-function parse_(markdown) {
+function parseItalic(markdown) {
   return applyTagToText(markdown, '_', 'em');
 }
 
 function parseText(markdown, list) {
-  const parsedText = parse_(parse__(markdown));
+  const parsedText = parseItalic(parseBold(markdown));
   if (list) {
     return parsedText;
   } else {
