@@ -2,7 +2,7 @@ function wrapWithTag(text, tag) {
   return `<${tag}>${text}</${tag}>`;
 }
 
-function isTag(text, tag) {
+function hasTag(text, tag) {
   return text.startsWith(`<${tag}>`);
 }
 
