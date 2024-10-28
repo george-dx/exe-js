@@ -1,4 +1,4 @@
-function wrap(text, tag) {
+function wrapWithTag(text, tag) {
   return `<${tag}>${text}</${tag}>`;
 }
 
@@ -25,7 +25,7 @@ function parseText(markdown, list) {
   if (list) {
     return parsedText;
   } else {
-    return wrap(parsedText, 'p');
+    return wrapWithTag(parsedText, 'p');
   }
 }
 
@@ -42,7 +42,7 @@ function parseHeader(markdown, list) {
     return [null, list];
   }
   const headerTag = `h${count}`;
-  const headerHtml = wrap(markdown.substring(count + 1), headerTag);
+  const headerHtml = wrapWithTag(markdown.substring(count + 1), headerTag);
   if (list) {
     return [`</ul>${headerHtml}`, false];
   } else {
@@ -52,7 +52,7 @@ function parseHeader(markdown, list) {
 
 function parseLineItem(markdown, list) {
   if (markdown.startsWith('*')) {
-    const innerHtml = wrap(parseText(markdown.substring(2), true), 'li');
+    const innerHtml = wrapWithTag(parseText(markdown.substring(2), true), 'li');
     if (list) {
       return [innerHtml, true];
     } else {
