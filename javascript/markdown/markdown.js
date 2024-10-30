@@ -20,7 +20,7 @@ function parseItalic(markdown) {
   return applyTagToText(markdown, '_', 'em');
 }
 
-function parseText(markdown, list) {
+function parseInlineText(markdown, list) {
   const parsedText = parseItalic(parseBold(markdown));
   if (list) {
     return parsedText;
@@ -29,7 +29,7 @@ function parseText(markdown, list) {
   }
 }
 
-function parseHeader(markdown, list) {
+function parseMarkdownHeader(markdown, list) {
   let count = 0;
   for (let i = 0; i < markdown.length; i++) {
     if (markdown[i] === '#') {
@@ -50,9 +50,9 @@ function parseHeader(markdown, list) {
   }
 }
 
-function parseLineItem(markdown, list) {
+function parseMarkdownLineItem(markdown, list) {
   if (markdown.startsWith('*')) {
-    const innerHtml = wrapWithTag(parseText(markdown.substring(2), true), 'li');
+    const innerHtml = wrapWithTag(parseInlineText(markdown.substring(2), true), 'li');
     if (list) {
       return [innerHtml, true];
     } else {
@@ -62,21 +62,21 @@ function parseLineItem(markdown, list) {
   return [null, list];
 }
 
-function parseParagraph(markdown, list) {
+function parseMarkdownParagraph(markdown, list) {
   if (!list) {
-    return [parseText(markdown, false), false];
+    return [parseInlineText(markdown, false), false];
   } else {
-    return [`</ul>${parseText(markdown, false)}`, false];
+    return [`</ul>${parseInlineText(markdown, false)}`, false];
   }
 }
 
 function parseLine(markdown, list) {
-  let [result, inListAfter] = parseHeader(markdown, list);
+  let [result, inListAfter] = parseMarkdownHeader(markdown, list);
   if (result === null) {
-    [result, inListAfter] = parseLineItem(markdown, list);
+    [result, inListAfter] = parseMarkdownLineItem(markdown, list);
   }
   if (result === null) {
-    [result, inListAfter] = parseParagraph(markdown, list);
+    [result, inListAfter] = parseMarkdownParagraph(markdown, list);
   }
   if (result === null) {
     throw new Error('Invalid markdown');
@@ -84,7 +84,7 @@ function parseLine(markdown, list) {
   return [result, inListAfter];
 }
 
-export function parse(markdown) {
+export function parseMarkdown(markdown) {
   const lines = markdown.split('\n');
   let result = '';
   let list = false;
