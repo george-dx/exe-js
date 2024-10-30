@@ -84,7 +84,7 @@ function parseLine(markdown, list) {
   return [result, inListAfter];
 }
 
-export function parseMarkdown(markdown) {
+export function parse(markdown) {
   const lines = markdown.split('\n');
   let result = '';
   let list = false;
