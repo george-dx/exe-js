@@ -7,13 +7,10 @@
  * @returns {Record<string, number>} new score board
  */
 export function createScoreBoard() {
-  const obj = {
-    name: "The Best Ever",
-    score: 1000000
+  const scoreBoard = {
+    "The Best Ever": 1000000
   }
-  return {
-    "The Best Ever" : 1000000
-  };
+  return scoreBoard;
 }
 
 /**
