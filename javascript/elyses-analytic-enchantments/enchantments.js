@@ -69,6 +69,5 @@ export function getFirstOddCard(stack) {
  * @returns {number} position of the first card that is even
  */
 export function getFirstEvenCardPosition(stack) {
-  let first = stack.find((card) => card % 2 == 0);
-  return stack.indexOf(first ? first : -1);
+  return stack.findIndex((card) => card % 2 == 0);
 }
