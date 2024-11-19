@@ -1,1 +1,1 @@
-# JavaScript practice repository
+# JavaScript + React practice repository
