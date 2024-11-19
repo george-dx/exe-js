@@ -60,6 +60,7 @@ export class TranslationService {
   request(text) {
     const promise = () => new Promise((resolve, reject) => {
       this.api.request(text, (result) => {
+        // @ts-ignore
         result ? reject(result) : resolve();
       });
     });
