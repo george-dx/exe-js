@@ -1,5 +1,10 @@
 import { Profile } from "./Profile";
 import { Avatar } from "./Avatar";
+import PackingList from "./PackingList";
+
+function Card({ children }) {
+  return <div className="card">{children}</div>;
+}
 
 export function Gallery() {
   return (
@@ -8,7 +13,12 @@ export function Gallery() {
       <Profile />
       <Profile />
       <Profile />
-      <Avatar />
+      <Card>
+        <Avatar
+          person={{ name: "Lin Lanying", imageId: "1bX5QH6" }}
+          size={100}
+        />
+      </Card>
       <ul
         style={{
           backgroundColor: "white",
@@ -19,6 +29,7 @@ export function Gallery() {
         <li>Prepare aeronautics lectures</li>
         <li>Work on the alcohol-fuelled engine</li>
       </ul>{" "}
+      <PackingList />
     </section>
   );
 }
