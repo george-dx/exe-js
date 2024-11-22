@@ -1,9 +1,26 @@
 import { Profile } from "./Profile";
 import { Avatar } from "./Avatar";
 import PackingList from "./PackingList";
+import { getImageUrl } from "./utils";
+import { people } from "./data";
 
 function Card({ children }) {
   return <div className="card">{children}</div>;
+}
+
+export function List() {
+  const chemists = people.filter((person) => person.profession === "chemist");
+  const listItems = chemists.map((person) => (
+    <li key={person.id}>
+      <img src={getImageUrl(person)} alt={person.name} />
+      <p>
+        <b>{person.name}:</b>
+        {" " + person.profession + " "}
+        known for {person.accomplishment}
+      </p>
+    </li>
+  ));
+  return <ul>{listItems}</ul>;
 }
 
 export function Gallery() {
@@ -30,6 +47,7 @@ export function Gallery() {
         <li>Work on the alcohol-fuelled engine</li>
       </ul>{" "}
       <PackingList />
+      <List />
     </section>
   );
 }
