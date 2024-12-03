@@ -1,8 +1,12 @@
 import "./App.css";
-import Toolbar from "./Toolbar";
+import { NewGallery } from "./Gallery";
 
 function App() {
-  return <Toolbar />;
+  return (
+    <div>
+      <NewGallery />
+    </div>
+  );
 }
 
 export default App;

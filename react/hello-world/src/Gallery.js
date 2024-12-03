@@ -4,6 +4,9 @@ import PackingList from "./PackingList";
 import { getImageUrl } from "./utils";
 import { people } from "./data";
 import Recipe from "./Recipe";
+import { sculptureList } from "./data";
+import { useState } from "react";
+import Image from "./Image";
 
 function Card({ children }) {
   return <div className="card">{children}</div>;
@@ -24,7 +27,7 @@ export function List() {
   return <ul>{listItems}</ul>;
 }
 
-export function Gallery() {
+export function OldGallery() {
   return (
     <section>
       <h1>Amazing scientists</h1>
@@ -54,6 +57,49 @@ export function Gallery() {
       <Recipe drinkers={2} />
       <h2>For a gathering</h2>
       <Recipe drinkers={4} />
+    </section>
+  );
+}
+
+export function Gallery() {
+  const [index, setIndex] = useState(0);
+  const [showMore, setShowMore] = useState(false);
+
+  function handleClick() {
+    setIndex(index + 1);
+  }
+
+  function handleMoreClick() {
+    setShowMore(!showMore);
+  }
+
+  let sculpture = sculptureList[index];
+  return (
+    <>
+      <button onClick={handleClick}>Next</button>
+      <h2>
+        <i>{sculpture.name} </i>
+        by {sculpture.artist}
+      </h2>
+      <h3>
+        ({index + 1} of {sculptureList.length})
+      </h3>
+      {/* <img src={sculpture.url} alt={sculpture.alt} /> */}
+      <button onClick={handleMoreClick}>
+        {showMore ? "Hide" : "Show"} details
+      </button>
+      {showMore && <p>{sculpture.description}</p>}
+    </>
+  );
+}
+
+export function NewGallery() {
+  return (
+    <section>
+      <h1>Inspiring Sculptures</h1>
+      <Image />
+      <Image />
+      <Image />
     </section>
   );
 }
