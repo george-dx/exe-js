@@ -1,10 +1,10 @@
 import "./App.css";
-import { NewGallery } from "./Gallery";
+import Form from "./Form";
 
 function App() {
   return (
     <div>
-      <NewGallery />
+      <Form />
     </div>
   );
 }
