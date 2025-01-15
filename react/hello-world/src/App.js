@@ -1,10 +1,10 @@
 import "./App.css";
-import MovingDot from "./MovingDot";
+import ObjectForm from "./ObjectForm";
 
 function App() {
   return (
     <div>
-      <MovingDot />
+      <ObjectForm />
     </div>
   );
 }
