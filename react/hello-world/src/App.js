@@ -1,10 +1,10 @@
 import "./App.css";
-import Counter from "./Counter";
+import MovingDot from "./MovingDot";
 
 function App() {
   return (
     <div>
-      <Counter />
+      <MovingDot />
     </div>
   );
 }
