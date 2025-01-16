@@ -1,10 +1,10 @@
 import "./App.css";
-import ObjectForm from "./ObjectForm";
+import List from "./List";
 
 function App() {
   return (
     <div>
-      <ObjectForm />
+      <List />
     </div>
   );
 }
