@@ -12,7 +12,7 @@ function Card({ children }) {
   return <div className="card">{children}</div>;
 }
 
-export function List() {
+export function Listt() {
   const chemists = people.filter((person) => person.profession === "chemist");
   const listItems = chemists.map((person) => (
     <li key={person.id}>

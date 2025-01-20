@@ -1,10 +1,10 @@
 import "./App.css";
-import ShapeEditor from "./ShapeEditor";
+import { List } from "./List";
 
 function App() {
   return (
     <div>
-      <ShapeEditor />
+      <List />
     </div>
   );
 }
