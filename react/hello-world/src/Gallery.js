@@ -51,7 +51,7 @@ export function OldGallery() {
         <li>Work on the alcohol-fuelled engine</li>
       </ul>{" "}
       <PackingList />
-      <List />
+      <Listt />
       <h1>Spiced Chai Recipe</h1>
       <h2>For two</h2>
       <Recipe drinkers={2} />
