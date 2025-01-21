@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { useImmer } from "use-immer";
 
 let nextId = 3;
-
 const initialList = [
   { id: 0, title: "Big Bellies", seen: false },
   { id: 1, title: "Lunar Landscape", seen: false },
@@ -9,28 +9,21 @@ const initialList = [
 ];
 
 export default function BucketList() {
-  const [myList, setMyList] = useState(initialList);
-  const [yourList, setYourList] = useState(initialList);
+  const [myList, updateMyList] = useImmer(initialList);
+  const [yourList, updateYourList] = useImmer(initialList);
 
-  function handleToggleMyList(artworkId, nextSeen) {
-    const myNextList = [...myList];
-    setMyList(
-      myNextList.map((artwork) => {
-        if (artwork.id === artworkId) {
-          return { ...artwork, seen: nextSeen };
-        } else {
-          return artwork;
-        }
-      })
-    );
+  function handleToggleMyList(id, nextSeen) {
+    updateMyList((draft) => {
+      const artwork = draft.find((a) => a.id === id);
+      artwork.seen = nextSeen;
+    });
   }
 
   function handleToggleYourList(artworkId, nextSeen) {
-    const yourNextList = [...yourList];
-    const artwork = yourNextList.find((a) => a.id === artworkId);
-
-    artwork.seen = nextSeen;
-    setYourList(yourNextList);
+    updateYourList((draft) => {
+      const artwork = draft.find((a) => a.id === artworkId);
+      artwork.seen = nextSeen;
+    });
   }
 
   return (
