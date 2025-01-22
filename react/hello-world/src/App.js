@@ -1,10 +1,10 @@
 import "./App.css";
-import BucketList from "./BuckedList";
+import Form from "./Form";
 
 function App() {
   return (
     <div>
-      <BucketList />
+      <Form />
     </div>
   );
 }
