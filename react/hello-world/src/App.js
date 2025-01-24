@@ -1,10 +1,10 @@
 import "./App.css";
-import Form from "./Form";
+import Accordion from "./Accordion";
 
 function App() {
   return (
     <div>
-      <Form />
+      <Accordion />
     </div>
   );
 }
