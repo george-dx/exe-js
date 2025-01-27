@@ -1,43 +1,26 @@
 import { useState } from "react";
 import "./App.css";
-import Counter from "./Counter";
+import Chat from "./Chat";
+import ContactList from "./ContactList";
 
 function App() {
-  const [showB, setShowB] = useState(true);
-  const [isFancy, setIsFancy] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-
+  const [to, setTo] = useState(contacts[0]);
   return (
-    <>
-      <div>
-        <Counter />
-        {showB && <Counter />}
-        <label>
-          <input
-            type="checkbox"
-            checked={showB}
-            onChange={(e) => {
-              setShowB(e.target.checked);
-            }}
-          />
-          Render the second counter
-        </label>
-      </div>
-      <div>
-        {isPaused ? <p>See you later!</p> : <Counter />}
-        <label>
-          <input
-            type="checkbox"
-            checked={isPaused}
-            onChange={(e) => {
-              setIsPaused(e.target.checked);
-            }}
-          />
-          Take a break
-        </label>
-      </div>
-    </>
+    <div>
+      <ContactList
+        contacts={contacts}
+        selectedContact={to}
+        onSelect={(contact) => setTo(contact)}
+      />
+      <Chat key={to.id} contact={to} />
+    </div>
   );
 }
+
+const contacts = [
+  { id: 0, name: "Taylor", email: "taylor@mail.com" },
+  { id: 1, name: "Alice", email: "alice@mail.com" },
+  { id: 2, name: "Bob", email: "bob@mail.com" },
+];
 
 export default App;
