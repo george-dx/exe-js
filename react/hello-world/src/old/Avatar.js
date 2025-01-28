@@ -1,4 +1,4 @@
-import { getImageUrl } from "./utils";
+import { getImageUrl } from "../utils";
 
 export function Avatar(props) {
   let person = props.person;

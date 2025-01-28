@@ -1,9 +1,9 @@
-import { Profile } from "./Profile";
+import { Profile } from "../Profile";
 import { Avatar } from "./Avatar";
-import PackingList from "./PackingList";
-import { getImageUrl } from "./utils";
+import PackingList from "../PackingList";
+import { getImageUrl } from "../utils";
 import { people } from "./data";
-import Recipe from "./Recipe";
+import Recipe from "../Recipe";
 import { sculptureList } from "./data";
 import { useState } from "react";
 import Image from "./Image";
